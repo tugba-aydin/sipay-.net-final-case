@@ -1,0 +1,14 @@
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\bin\Debug\net6.0\DAL.deps.json
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\bin\Debug\net6.0\DAL.runtimeconfig.json
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\bin\Debug\net6.0\DAL.dll
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\bin\Debug\net6.0\DAL.pdb
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\DAL.dll
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\refint\DAL.dll
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\DAL.pdb
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\DAL.genruntimeconfig.cache
+C:\Users\tugba\Desktop\sipay-.net-final-case\ApartmentSiteManagementSystem\DAL\obj\Debug\net6.0\ref\DAL.dll

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "wvmOqTFuDGzn3gC5heg9SPQMQ63QnAHQs0lUHxM7y4w=",
+  "Source": "ApartmentManagement.API",
+  "BasePath": "_content/ApartmentManagement.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
