@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using BLL.Services.Abstract;
-using BLL.Models.Requests.Payment;
+using Payment.API.Models.Requests.Payment;
+using Payment.API.Services.Abstract;
 
 namespace Payment.API.Controllers
 {
@@ -9,14 +9,18 @@ namespace Payment.API.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        public PaymentController()
+        private readonly IPaymentService paymentService;
+        public PaymentController(IPaymentService _paymentService)
         {
-            
+            paymentService = _paymentService;
+
         }
         [HttpPost]
-        public bool PayInvoice()
+        public IActionResult PayInvoice([FromBody] CreatePaymentRequest request)
         {
-            return true;
+            var result = paymentService.Pay(request);
+            if (result) return Ok();
+            else return BadRequest();
         }
     }
 }

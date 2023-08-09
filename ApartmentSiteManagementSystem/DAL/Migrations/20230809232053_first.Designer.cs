@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230806201420_first")]
+    [Migration("20230809232053_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,37 +23,6 @@ namespace DAL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("DAL.Entities.Account", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("CardNumber")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Cvv")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ValidDate")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Accounts");
-                });
 
             modelBuilder.Entity("DAL.Entities.Apartment", b =>
                 {
@@ -75,8 +44,9 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("State")
-                        .HasColumnType("boolean");
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -85,12 +55,7 @@ namespace DAL.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Apartments");
                 });
@@ -159,10 +124,13 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Messages");
                 });
@@ -170,10 +138,6 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.Payment", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<string>("AccountId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("InvoiceId")
@@ -188,8 +152,6 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
-
                     b.HasIndex("InvoiceId");
 
                     b.ToTable("Payments");
@@ -203,6 +165,9 @@ namespace DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<string>("ApartmentId")
+                        .HasColumnType("text");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
@@ -212,6 +177,9 @@ namespace DAL.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("HasVehicle")
                         .HasColumnType("boolean");
 
                     b.Property<string>("IdentityNumber")
@@ -249,6 +217,9 @@ namespace DAL.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("Plate")
+                        .HasColumnType("text");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("text");
@@ -269,6 +240,8 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ApartmentId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -283,19 +256,20 @@ namespace DAL.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3737be5b-999c-4e5c-b6a6-fc71560a2e83",
+                            ConcurrencyStamp = "35eaf592-086e-4b12-b8b1-a49f700ae50b",
                             Email = "tugba.aydinn.94@gmail.com",
                             EmailConfirmed = false,
+                            HasVehicle = false,
                             IdentityNumber = "12345678998",
                             LockoutEnabled = false,
                             Name = "Tuğba",
                             NormalizedEmail = "TUGBA.AYDINN.94@GMAIL.COM",
                             NormalizedUserName = "TUGBAA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKH3Ng/Gak8064aHaqt2yXZiQ9wYJXOu9kEeZZQPHcq1i9Fu0147aEv3PEWhN3j+Gw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIiOF6ExntAE54LTxckzAzY61Qwh2kwAceoAff8L7bOuVCY67LRn3sxsX7Lp/6hQNw==",
                             Phone = "05462825451",
                             PhoneNumberConfirmed = false,
                             Role = "Admin",
-                            SecurityStamp = "ad809a68-8d30-40a8-8b06-f8e4c2972c4e",
+                            SecurityStamp = "6124e602-04a4-4891-b061-8bbee6d7731e",
                             Surname = "Aydın",
                             TwoFactorEnabled = false,
                             UserName = "tugbaa"
@@ -457,26 +431,6 @@ namespace DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("DAL.Entities.Account", b =>
-                {
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("DAL.Entities.Apartment", b =>
-                {
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DAL.Entities.Invoice", b =>
                 {
                     b.HasOne("DAL.Entities.Apartment", "Apartment")
@@ -496,23 +450,35 @@ namespace DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Payment", b =>
+            modelBuilder.Entity("DAL.Entities.Message", b =>
                 {
-                    b.HasOne("DAL.Entities.Account", "Account")
+                    b.HasOne("DAL.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("AccountId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Payment", b =>
+                {
                     b.HasOne("DAL.Entities.Invoice", "Invoice")
                         .WithMany()
                         .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Account");
-
                     b.Navigation("Invoice");
+                });
+
+            modelBuilder.Entity("DAL.Entities.User", b =>
+                {
+                    b.HasOne("DAL.Entities.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId");
+
+                    b.Navigation("Apartment");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

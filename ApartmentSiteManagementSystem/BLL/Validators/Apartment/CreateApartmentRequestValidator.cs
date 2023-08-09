@@ -12,7 +12,6 @@ namespace BLL.Validators.Apartment
     {
         public CreateApartmentRequestValidator()
         {
-            RuleFor(request=>request.State).NotEmpty().NotNull();
             RuleFor(request=>request.FloorLocation).NotEmpty().NotNull();
             RuleFor(request=>request.ApartmentNumber).NotEmpty().NotNull();
             RuleFor(request=>request.Block).NotEmpty().NotNull();

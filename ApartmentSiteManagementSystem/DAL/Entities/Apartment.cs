@@ -11,12 +11,10 @@ namespace DAL.Entities
     {
         public string Id { get; set; }
         public string Block { get; set; }
-        public bool State { get; set; }
+        public string State { get; set; }
         public string Type { get; set; }
         public string FloorLocation { get; set; }
         public string ApartmentNumber { get; set; }
-        public string? UserId { get; set; }
-        public User? User { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

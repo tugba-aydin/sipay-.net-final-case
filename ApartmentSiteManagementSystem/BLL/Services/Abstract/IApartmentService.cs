@@ -1,4 +1,5 @@
 ﻿using BLL.Models.Requests.Apartment;
+using BLL.Models.Responses.Apartment;
 using DAL.Entities;
 using DAL.Repository;
 using System;
@@ -11,8 +12,8 @@ namespace BLL.Services.Abstract
 {
     public interface IApartmentService
     {
-        List<Apartment> GetAllApartments();
-        Apartment GetApartmentDetail(string id);
+        List<ApartmentResponse> GetAllApartments();
+        ApartmentResponse GetApartmentDetail(string id);
         void AddApartment(CreateApartmentRequest apartmentRequest);
         void DeleteApartment(string id);
         void UpdateApartment(UpdateApartmentRequest apartmentRequest);

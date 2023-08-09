@@ -39,13 +39,15 @@ namespace BLL.Services.Concrete
                 var userExists = await userManager.FindByEmailAsync(model.Email);
                 Random rnd = new Random();
                 var number = rnd.Next(100000, 999999);
-                var password = "A" + number + ".a";
+                var password = "A" + number + "!a";
                 if (userExists != null)
                     return (0, "User already exists");
 
                 User user = mapper.Map<User>(model);
                 
-                user.Id = Guid.NewGuid().ToString(); 
+                user.Id = Guid.NewGuid().ToString();
+                user.UserName = user.Email;
+                user.NormalizedUserName = user.UserName.ToUpper();
                 var createUserResult = await userManager.CreateAsync(user, password);
                 if (!createUserResult.Succeeded)
                     return (0, "User creation failed! Please check user details and try again.");
@@ -58,7 +60,7 @@ namespace BLL.Services.Concrete
                 MailModel mailModel = new MailModel() {
                     ToEmail=user.Email,
                     Subject="Yeni Üyelik",
-                    Body="Apartman Site Yönetim Sistemine hoşgeldiniz. Üyeliğiniz aktif edilmiştir. Şifreniz "+password+". Lütfen kimseyle paylaşmayınız "
+                    Body="Apartman Site Yönetim Sistemine hoşgeldiniz. Üyeliğiniz aktif edilmiştir. Şifreniz: "+password
                 };
                 mailService.SendEmailForPassword(mailModel);
                 return (1, createUserResult.ToString());
@@ -74,9 +76,9 @@ namespace BLL.Services.Concrete
 
         public async Task<(int, string)> Login(LoginRequest model)
         {
-            var user = await userManager.FindByNameAsync(model.Username);
+            var user = await userManager.FindByEmailAsync(model.Email);
             if (user == null)
-                return (0, "Invalid username");
+                return (0, "Invalid email");
             if (!await userManager.CheckPasswordAsync(user, model.Password))
                 return (0, "Invalid password");
 

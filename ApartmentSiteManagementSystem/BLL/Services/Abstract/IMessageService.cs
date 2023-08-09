@@ -1,4 +1,5 @@
 ﻿using BLL.Models.Requests.Message;
+using BLL.Models.Responses.Message;
 using DAL.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace BLL.Services.Abstract
 {
     public interface IMessageService
     {
-        List<Message> GetAllMessages();
+        List<MessageResponse> GetAllMessages();
         void SendMessage(CreateMessageRequest message);
-        Message GetMessageDetail(string id);
+        MessageResponse GetMessageDetail(string id);
     }
 }

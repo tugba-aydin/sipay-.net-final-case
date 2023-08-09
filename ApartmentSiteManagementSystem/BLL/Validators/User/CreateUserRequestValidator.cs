@@ -11,7 +11,6 @@ namespace BLL.Validators.User
     public class CreateUserRequestValidator:AbstractValidator<CreateUserRequest>
     {
         public CreateUserRequestValidator() {
-            RuleFor(request => request.Username).NotEmpty();
             RuleFor(request => request.Phone).NotEmpty().NotNull();
             RuleFor(request => request.Email).NotEmpty().NotNull();
             RuleFor(request => request.Name).NotEmpty().NotNull().MinimumLength(2);

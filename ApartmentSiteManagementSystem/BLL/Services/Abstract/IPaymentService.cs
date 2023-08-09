@@ -11,6 +11,6 @@ namespace BLL.Services.Abstract
     public interface IPaymentService
     {
         List<Payment> GetAllPayments();
-        Task Pay(CreatePaymentRequest request);
+        Task Pay(CreatePaymentRequest request,string role);
     }
 }

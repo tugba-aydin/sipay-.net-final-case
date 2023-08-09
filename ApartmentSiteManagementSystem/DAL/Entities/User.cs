@@ -15,5 +15,9 @@ namespace DAL.Entities
         public string IdentityNumber { get; set; }
         public string Phone { get; set; }
         public string Role { get; set; }
+        public bool HasVehicle { get; set; }
+        public string? Plate { get; set; }
+        public string? ApartmentId { get; set; }
+        public Apartment? Apartment { get; set; }
     }
 }

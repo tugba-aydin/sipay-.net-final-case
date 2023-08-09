@@ -1,7 +1,9 @@
-﻿using AutoMapper.Internal;
+﻿using AutoMapper;
+using AutoMapper.Internal;
 using BLL.Models;
 using BLL.Models.Requests;
 using BLL.Services.Abstract;
+using DAL.Entities;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Options;
@@ -18,10 +20,12 @@ namespace BLL.Services.Concrete
     {
         private readonly MailSettingsModel mailSettings;
         private readonly IInvoiceService invoiceService;
-        public MailService(IOptions<MailSettingsModel> _mailSettings, IInvoiceService _invoiceService)
+        private readonly IMapper mapper;
+        public MailService(IOptions<MailSettingsModel> _mailSettings, IInvoiceService _invoiceService,IMapper _mapper)
         {
             mailSettings = _mailSettings.Value;
             invoiceService = _invoiceService;
+            mapper = _mapper;
         }
         public async Task SendEmail(MailModel mailModel)
         {
@@ -56,8 +60,9 @@ namespace BLL.Services.Concrete
         }
         public void SendEmailForNotIsPaidInvoice()
         {
-            Console.WriteLine("job çalışıyor.");
-            var invoiceList = invoiceService.GetAllNotPaidInvoices();
+            Console.WriteLine("");
+            var response = invoiceService.GetAllNotPaidInvoices();
+            var invoiceList = mapper.Map<List<Invoice>>(response);
             foreach (var item in invoiceList)
             {
                 if (item.User != null)

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JVma/EPwdTrAeJR0kUn+QKJ3ob0O/KKMHkXyKWGgIYHynSDFtpoYKzTaN6xJJ4YXvWG+lyO6NCsXYkWRa0OvPA==",
+  "dgSpecHash": "c0nILCAxHAvD+5j6yM6s+MyxU1jkqyie+c41ejvKQWFV49GjUrI1tgNX2dg2iiiqaGkx5kUagr/wonC8cE+vug==",
   "success": true,
   "projectFilePath": "C:\\Users\\tugba\\Desktop\\sipay-.net-final-case\\ApartmentSiteManagementSystem\\Payment.API\\Payment.API.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,7 @@
     "C:\\Users\\tugba\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
     "C:\\Users\\tugba\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\tugba\\.nuget\\packages\\mimekit\\4.1.0\\mimekit.4.1.0.nupkg.sha512",
+    "C:\\Users\\tugba\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\tugba\\.nuget\\packages\\npgsql\\6.0.0\\npgsql.6.0.0.nupkg.sha512",
     "C:\\Users\\tugba\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\6.0.0\\npgsql.entityframeworkcore.postgresql.6.0.0.nupkg.sha512",
     "C:\\Users\\tugba\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",

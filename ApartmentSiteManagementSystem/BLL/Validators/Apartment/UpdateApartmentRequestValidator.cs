@@ -13,7 +13,6 @@ namespace BLL.Validators.Apartment
         public UpdateApartmentRequestValidator()
         {
             RuleFor(request => request.Id).NotEmpty().NotNull();
-            RuleFor(request => request.State).NotEmpty().NotNull();
             RuleFor(request => request.FloorLocation).NotEmpty().NotNull();
             RuleFor(request => request.ApartmentNumber).NotEmpty().NotNull();
             RuleFor(request => request.Block).NotEmpty().NotNull();

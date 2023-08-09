@@ -12,8 +12,6 @@ namespace DAL.Entities
         public DateTime PaymentDate { get; set; }
         public string InvoiceId { get; set; }
         public Invoice? Invoice { get; set; }
-        public string AccountId { get; set; }
-        public Account? Account { get; set; }
         public decimal Price { get; set; }
     }
 }

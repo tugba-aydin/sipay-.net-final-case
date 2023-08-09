@@ -1,8 +1,5 @@
-using BLL.Services.Abstract;
-using BLL.Services.Concrete;
-using DAL.Context;
-using DAL.Repository;
 using Microsoft.EntityFrameworkCore;
+using Payment.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ServiceManager();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

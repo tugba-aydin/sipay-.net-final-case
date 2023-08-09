@@ -13,7 +13,6 @@ namespace BLL.Validators.Invoice
         public UpdateInvoiceRequestValidator()
         {
             RuleFor(request=>request.Id).NotEmpty().NotNull();
-            RuleFor(request => request.IsPaid).NotEmpty();
             RuleFor(request => request.UserId).NotEmpty();
             RuleFor(request => request.Price).NotEmpty().GreaterThan(0);
             RuleFor(request => request.ApartmentId).NotEmpty();

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BLL.Models.Requests;
 using BLL.Models.Requests.User;
+using BLL.Models.Responses.User;
 using BLL.Services.Abstract;
 using BLL.Validators.User;
 using DAL.Entities;
@@ -45,17 +46,19 @@ namespace BLL.Services.Concrete
             }
         }
 
-        public List<User> GetAllUsers()
+        public List<UserResponse> GetAllUsers()
         {
-            return repository.GetAll();
+            var users= repository.GetAll();
+            return mapper.Map<List<UserResponse>>(users);
         }
 
-        public User GetUserDetail(string identityNumber)
+        public UserResponse GetUserDetail(string identityNumber)
         {
             if(identityNumber !=null)
             {
                 var model = GetAllUsers().Where(user => user.IdentityNumber.Equals(identityNumber)).FirstOrDefault();
-                return repository.GetById(model.Id);
+                var user= repository.GetById(model.Id);
+                return mapper.Map<UserResponse>(user);
             }
             return null;
         }

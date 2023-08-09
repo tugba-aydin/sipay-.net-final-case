@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.Models.Requests.Apartment;
+using BLL.Models.Responses.Apartment;
 using BLL.Services.Abstract;
 using BLL.Validators.Apartment;
 using DAL.Entities;
@@ -46,15 +47,19 @@ namespace BLL.Services.Concrete
             }
         }
 
-        public List<Apartment> GetAllApartments()
+        public List<ApartmentResponse> GetAllApartments()
         {
-            return repository.GetAll();
+            var apartments= repository.GetAll();
+            return mapper.Map<List<ApartmentResponse>>(apartments);
         }
 
-        public Apartment GetApartmentDetail(string id)
+        public ApartmentResponse GetApartmentDetail(string id)
         {
             if (id != null)
-                return repository.GetById(id);
+            {
+                var apartment = repository.GetById(id);
+                return mapper.Map <ApartmentResponse> (apartment);
+            }
             else return null;
         }
 

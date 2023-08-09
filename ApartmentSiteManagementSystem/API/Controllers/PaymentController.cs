@@ -1,8 +1,10 @@
 ﻿using BLL.Models.Requests.Payment;
 using BLL.Services.Abstract;
 using DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ApartmentManagement.API.Controllers
 {
@@ -21,10 +23,12 @@ namespace ApartmentManagement.API.Controllers
             var result = paymentService.GetAllPayments();
             return Ok(result);
         }
+        [Authorize(Roles = "User")]
         [HttpPost]
-        public async Task<IActionResult> Pay(CreatePaymentRequest request)
+        public async Task<IActionResult> Pay([FromBody]CreatePaymentRequest request)
         {
-            paymentService.Pay(request);
+            var role = HttpContext.User.FindFirstValue(ClaimTypes.Role);
+            paymentService.Pay(request,role);
             return Ok();
         }
     }

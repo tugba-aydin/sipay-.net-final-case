@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.Models.Requests.Invoice;
+using BLL.Models.Responses.Invoice;
 using BLL.Services.Abstract;
 using BLL.Validators.Invoice;
 using DAL.Entities;
@@ -69,29 +70,35 @@ namespace BLL.Services.Concrete
             }
         }
 
-        public List<Invoice> GetAllInvoices()
+        public List<InvoiceResponse> GetAllInvoices()
         {
-            return repository.GetAll();
+            var invoices = repository.GetAll();
+            return mapper.Map<List<InvoiceResponse>>(invoices);
         }
 
-        public List<Invoice> GetAllNotPaidInvoices()
+        public List<InvoiceResponse> GetAllNotPaidInvoices()
         {
-            return repository.GetAll().Where(data=>data.IsPaid==false).ToList();
+            var invoices = repository.GetAll().Where(data => data.IsPaid == false).ToList();
+            return mapper.Map<List<InvoiceResponse>>(invoices);
         }
 
-        public List<Invoice> GetDetailInvoices(string? userId, string role)
+        public List<InvoiceResponse> GetDetailInvoices(string? userId, string role)
         {
             if (role == "User")
             {
-                return repository.GetAll().Where(data=>data.UserId == userId).ToList();
+                var invoices = repository.GetAll().Where(data => data.UserId == userId).ToList();
+                return mapper.Map<List<InvoiceResponse>>(invoices);
             }
             return null;
         }
 
-        public Invoice GetInvoiceDetail(string id)
+        public InvoiceResponse GetInvoiceDetail(string id)
         {  
             if (id != null)
-                return repository.GetById(id);
+            {
+                var invoice= repository.GetById(id);
+                return mapper.Map<InvoiceResponse>(invoice);
+            }
             else return null;
         }
 

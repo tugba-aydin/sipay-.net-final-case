@@ -32,14 +32,12 @@ namespace ApartmentManagement.API.Controllers
             return Ok(result);
         }
         [Authorize(Roles = "User")]
-        [Authorize]
         [HttpGet("Invoices/Detail")]
         public async Task<IActionResult> GetInvoicesDetail()
         {
             var role = HttpContext.User.FindFirstValue(ClaimTypes.Role);
-
             var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result=invoiceService.GetDetailInvoices(userId, role);
+            var result = invoiceService.GetDetailInvoices(userId, role);
             return Ok(result);
         }
         [Authorize(Roles = "Admin")]

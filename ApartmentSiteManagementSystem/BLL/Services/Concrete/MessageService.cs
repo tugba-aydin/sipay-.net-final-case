@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.Models.Requests.Message;
+using BLL.Models.Responses.Message;
 using BLL.Services.Abstract;
 using DAL.Entities;
 using DAL.Repository;
@@ -20,11 +21,12 @@ namespace BLL.Services.Concrete
             repository = _repository;
             mapper = _mapper;
         }
-        public List<Message> GetAllMessages() {
-            return repository.GetAll();
+        public List<MessageResponse> GetAllMessages() {
+            var messages = repository.GetAll();
+            return mapper.Map<List<MessageResponse>>(messages);
         }
 
-        public Message GetMessageDetail(string id)
+        public MessageResponse GetMessageDetail(string id)
         {
             if (id != null)
             {
@@ -33,7 +35,8 @@ namespace BLL.Services.Concrete
                 request.IsRead = true;
                 var model= mapper.Map<Message>(request);
                 repository.Update(model);
-                return repository.GetById(id);
+                var message = repository.GetById(id);
+                return mapper.Map<MessageResponse>(message);
             }
             return null;
         }

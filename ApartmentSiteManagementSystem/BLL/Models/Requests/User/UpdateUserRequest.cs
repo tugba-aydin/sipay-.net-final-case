@@ -16,5 +16,7 @@ namespace BLL.Models.Requests.User
         public string? IdentityNumber { get; set; }
         public string? Phone { get; set; }
         public string? Role { get; set; }
+        public string? ApartmentId { get; set; }
+
     }
 }

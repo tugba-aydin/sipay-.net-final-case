@@ -20,7 +20,6 @@ namespace DAL.Context
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<Account> Accounts { get; set; }
         public DbSet<Payment> Payments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

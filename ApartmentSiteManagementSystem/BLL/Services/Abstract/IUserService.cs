@@ -1,5 +1,6 @@
 ﻿using BLL.Models.Requests;
 using BLL.Models.Requests.User;
+using BLL.Models.Responses.User;
 using DAL.Entities;
 using DAL.Repository;
 using System;
@@ -12,8 +13,8 @@ namespace BLL.Services.Abstract
 {
     public interface IUserService
     {
-        List<User> GetAllUsers();
-        User GetUserDetail(string identityNumber);
+        List<UserResponse> GetAllUsers();
+        UserResponse GetUserDetail(string identityNumber);
         Task AddUser(CreateUserRequest user);
         void DeleteUser(string identityNumber);
         void UpdateUser(UpdateUserRequest user);
