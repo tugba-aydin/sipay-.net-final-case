@@ -52,6 +52,9 @@
 <b>Payment.API</b>
 <p>Kullanıcıların ödeme işlemini gerçekleştiren katmandır.DAL,BLL ve API katmanlarına direk erişimi yoktur.HTTP isteğiyle iletişim sağlanmaktadır.Kendine ait bağımlılıkları vardır.Entity,DbContext,Repository,Servis,Controller ve projenin Config işlemlerini içerisinde barındırır.</p>
 <p></p>
+<p></p>
+<a href="https://raw.githubusercontent.com/tugba-aydin/sipay-.net-final-case/main/ApartmentManagement.API.postman_collection.json?token=GHSAT0AAAAAACFBW2L4XG2VTK3ZLPD6EQQIZGUHE2Q">Postman Collection</a>
+<p></p>
 <b>Referanslar</b>
 
 - https://ravindradevrani.medium.com/net-7-jwt-authentication-and-role-based-authorization-5e5e56979b67
