@@ -17,6 +17,7 @@ namespace ApartmentManagement.API.Controllers
         {
             paymentService = _paymentService;
         }
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public IActionResult GetAllPayments()
         {
